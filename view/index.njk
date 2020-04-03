@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/public/lib/bootstrap.css">
+    </head>
+
+    <body>
+        <div class="header container">
+            <div class="page-header">
+                <h1>
+                    123<small>456</small>
+                </h1>
+                <a href="/post" class="btn btn-success">发表留言</a>
+            </div>
+        </div>
+        <div class="comments container">
+            <ul class="list-group">
+                {% for item in comments %}
+                    <li class="list-group-item">
+                        {{item.name}}说：{{item.message}}
+                        <span class="pull-right">{{item.dateTime}}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+
+</html>
