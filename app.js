@@ -1,9 +1,13 @@
 const express = require('express')
 const nunjucks = require('nunjucks')
+const bodyParser = require('body-parser')
 
 const app = express()
 nunjucks.configure('views', { autoescape: true, express: app });
 app.set('view engine', 'njk')
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 let comments = [
     {
@@ -38,8 +42,7 @@ app.get('/post', (req, res) => {
     res.render('post')
 })
 app.post('/pinglun', (req, res) => {
-    console.log(req.query)  //打印结果为 {},post请求不能通过这种方式获取请求主体
-    const comment = req.query
+    const comment = req.body
     comments.unshift(comment)
     res.redirect('/')
 })
