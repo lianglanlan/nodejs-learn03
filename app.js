@@ -37,7 +37,8 @@ app.get('/', (req, res) => {
 app.get('/post', (req, res) => {
     res.render('post')
 })
-app.get('/pinglun', (req, res) => {
+app.post('/pinglun', (req, res) => {
+    console.log(req.query)  //打印结果为 {},post请求不能通过这种方式获取请求主体
     const comment = req.query
     comments.unshift(comment)
     res.redirect('/')
